@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     outline: none;
     text-decoration: none;
-
+    font-family: 'Inter' ;
     }
     button{
         cursor: pointer;
@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     --negative:#E60000;
     --warnning:#FFCD07;
     --sucsses:#168821;
+     
    
     } 
     .load{

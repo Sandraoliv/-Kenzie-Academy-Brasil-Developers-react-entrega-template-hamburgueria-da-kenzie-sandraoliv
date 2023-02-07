@@ -14,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vercel": "^28.15.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

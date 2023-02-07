@@ -18,10 +18,6 @@ function App() {
   );
   const [cartTotal, setCartTotal] = useState(0);
 
-  // onMount requisição à API/carregando informações/
-  // productList é o state que guarda a resposta da API
-  // e é com ele que consigo dar reatividade ao componente
-  // ul ProductsList alterando os itens da lista li
   useEffect(() => {
     async function loadProductsApi() {
       try {
@@ -39,32 +35,39 @@ function App() {
     loadProductsApi();
   }, []);
 
-  //  onUpDate adição  ao carrinho
-
-  function addProductToCart(productsList, id) {
-    toast.success("Produto adicionado!");
-    return setCurrentSale([...currentSale, productsList]);
+  function addProductToCart(productsList) {
+    if (
+      !currentSale.some(
+        (newProductsList) => newProductsList.name === productsList.name
+      )
+    ) {
+      setCurrentSale([...currentSale, productsList]);
+      toast.success("Produto adicionado!");
+    } else {
+      toast.error("Produto já adicionado!");
+    }
   }
 
-  // persistindo dados
   useEffect(() => {
     localStorage.setItem("@currentSale", JSON.stringify(currentSale));
   }, [currentSale]);
 
-  // removendo do carrinho
-  function removeProductFromCart(id) {
-    const newCurrentSale = currentSale.filter(
-      (productsList) => productsList.id !== id
-    );
+  function removeProductFromCart(productId) {
+    const newCurrentSale = currentSale.filter((sale) => sale.id !== productId);
+
     setCurrentSale(newCurrentSale);
-    toast.error("Poduto removido!");
+    toast.error("Produto removido!");
+  }
+  function removeAll() {
+    setCurrentSale([]);
+    toast.success("Todos os itens removidos!");
   }
 
-  const filteredList = productsList.filter((product) => {
-    return filteredProducts === ""
+  const selectedProduct = productsList.filter((product) =>
+    filteredProducts === ""
       ? true
-      : product.name.toLowerCase().includes(filteredProducts.toLowerCase());
-  });
+      : product.name.toLowerCase().includes(filteredProducts.toLowerCase())
+  );
 
   return (
     <div className="App">
@@ -77,16 +80,18 @@ function App() {
       ) : (
         <main>
           <section>
-            {filteredProducts && filteredProducts}
             <ProductsList
-              productsList={productsList}
+              selectedProduct={selectedProduct}
               addProductToCart={addProductToCart}
             />
           </section>
           <Cart
+            setCartTotal={setCartTotal}
             currentSale={currentSale}
             productsList={productsList}
             removeProductFromCart={removeProductFromCart}
+            removeAll={removeAll}
+            setCurrentSale={setCurrentSale}
           />
         </main>
       )}

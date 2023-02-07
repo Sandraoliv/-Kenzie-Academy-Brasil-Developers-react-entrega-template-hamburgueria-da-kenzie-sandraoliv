@@ -2,10 +2,14 @@ import { Product } from "../Products";
 import { StyledProductsList } from "./style.js";
 
 //  ul
-export function ProductsList({ productsList, addProductToCart }) {
+export function ProductsList({
+  selectedProduct,
+
+  addProductToCart,
+}) {
   return (
     <StyledProductsList>
-      {productsList.map((product, index) => (
+      {selectedProduct.map((product, index) => (
         <Product
           product={product}
           key={index}

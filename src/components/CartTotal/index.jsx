@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyledCartTotal } from "./style.js";
 
-export function CartTotal({ currentSale }) {
+export function CartTotal({ currentSale, removeAll }) {
   const total = currentSale.reduce(
     (previosValue, currentValue) => previosValue + currentValue.price,
     0
@@ -11,9 +11,11 @@ export function CartTotal({ currentSale }) {
     <StyledCartTotal>
       <div>
         <h4>Total</h4>
-        <p>R${total},00</p>
+        <span>R${total},00</span>
       </div>
-      <button className="cartButton">Remover todos</button>
+      <button className="cartButton" onClick={() => removeAll()}>
+        Remover todos
+      </button>
     </StyledCartTotal>
   );
 }

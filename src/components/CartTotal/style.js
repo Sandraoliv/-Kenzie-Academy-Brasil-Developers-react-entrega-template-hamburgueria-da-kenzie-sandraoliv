@@ -9,27 +9,28 @@ export const StyledCartTotal = styled.div`
   justify-content: space-between;
   border-top: 2px solid #e0e0e0;
   div {
-    height: 50px;
+    height: 120px;
     padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #f5f5f5;
-    p {
-      margin-right: 10px;
-    }
-    h4 {
-      margin-left: 10px;
-    }
-    height: 80px;
   }
+
+  h4 {
+    font-family: "Inter";
+    font-size: 0.2rem;
+    margin-left: 10px;
+  }
+  height: 80px;
 
   .cartButton {
     text-align: center;
     color: var(--grey2);
     width: 100%;
-    height: 50px;
+    height: 80px;
     padding: 14px 0;
     background-color: #e0e0e0;
+    font-family: "Inter";
   }
 `;

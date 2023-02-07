@@ -1,7 +1,14 @@
 import { CartTotal } from "../CartTotal/";
 import { StyledCart } from "./style";
 
-export function Cart({ currentSale, removeProductFromCart, id }) {
+export function Cart({
+  removeAll,
+  currentSale,
+  productId,
+  removeProductFromCart,
+  setCartTotal,
+  setCurrentSale,
+}) {
   return (
     <StyledCart>
       <div>
@@ -9,8 +16,8 @@ export function Cart({ currentSale, removeProductFromCart, id }) {
           <h3>Carrinho de compras</h3>
         </div>
         <ul>
-          {currentSale.map((productsList, id) => (
-            <li key={id}>
+          {currentSale.map((productsList) => (
+            <li key={productsList.id}>
               <div className="imageContainer">
                 <img src={productsList.img} alt="" />
               </div>
@@ -18,12 +25,19 @@ export function Cart({ currentSale, removeProductFromCart, id }) {
                 <h4>{productsList.name}</h4>
                 <span>{productsList.category}</span>
               </div>
-              <button onClick={() => removeProductFromCart(id)}>Remover</button>
+              <button onClick={() => removeProductFromCart(productsList.id)}>
+                Remover
+              </button>
             </li>
           ))}
         </ul>
       </div>
-      <CartTotal currentSale={currentSale} />
+      <CartTotal
+        setCurrentSale={setCurrentSale}
+        currentSale={currentSale}
+        removeAll={removeAll}
+        setCartTotal={setCartTotal}
+      />
     </StyledCart>
   );
 }

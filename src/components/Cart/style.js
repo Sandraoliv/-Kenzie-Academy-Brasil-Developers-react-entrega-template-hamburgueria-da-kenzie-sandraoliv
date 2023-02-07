@@ -30,6 +30,7 @@ export const StyledCart = styled.section`
   }
 
   h3 {
+    font-family: "Inter";
     font-size: 1.12rem;
     color: white;
   }
@@ -76,7 +77,7 @@ export const StyledCart = styled.section`
       height: 52px;
       background-color: transparent;
       border: none;
-
+      font-family: "Inter";
       color: var(--grey2);
     }
     div {
@@ -90,10 +91,12 @@ export const StyledCart = styled.section`
       h4 {
         color: var(--grey1);
         font-size: 1rem;
+        font-family: inter;
       }
       span {
         font-size: 0.5rem;
         color: var(--grey2);
+        font-family: "Inter";
       }
     }
   }

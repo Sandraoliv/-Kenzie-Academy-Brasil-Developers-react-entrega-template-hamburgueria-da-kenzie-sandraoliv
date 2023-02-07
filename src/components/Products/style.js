@@ -34,6 +34,7 @@ export const StyledProduct = styled.li`
     justify-content: space-evenly;
 
     span {
+      font-family: "Inter";
       color: var(--primary);
     }
   }
